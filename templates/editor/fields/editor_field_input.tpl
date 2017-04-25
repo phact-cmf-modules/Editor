@@ -1,8 +1,7 @@
-<textarea id="{$id}" name="{$name}" {raw $html}>{$value}</textarea>
+<textarea name="{$name}" data-rid="{$rid}" {raw $html}>{$value}</textarea>
 
 <script>
-    tinymce.init({
-        selector: '#{$id}',
+    $('[data-rid="{$rid}"]').tinymce({
         language: 'ru',
         plugins: [
             'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
