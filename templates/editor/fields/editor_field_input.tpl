@@ -6,7 +6,7 @@
         plugins: [
             'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
             'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime image imagetools media nonbreaking',
-            'save table contextmenu directionality emoticons template paste textcolor'
+            'save table contextmenu directionality emoticons template paste textcolor autoresize'
         ],
         relative_urls: false,
         file_browser_callback: function(field_name, url, type, win) {
