@@ -19,9 +19,14 @@ use Phact\Controller\Controller;
 use Phact\Helpers\Paths;
 use Phact\Helpers\Text;
 use Phact\Main\Phact;
+use Phact\Storage\FileSystemStorage;
+use Phact\Storage\Storage;
 
 class EditorController extends Controller
 {
+    /**
+     * @return Storage|FileSystemStorage
+     */
     public function getStorage()
     {
         return Phact::app()->storage;
@@ -71,7 +76,9 @@ class EditorController extends Controller
 
     public function index()
     {
-        $structure = $this->getStorage()->dir($this->getPath());
+        $path = $this->getPath();
+        $this->getStorage()->prepareFilePath($path . DIRECTORY_SEPARATOR . 'file');
+        $structure = $this->getStorage()->dir($path);
         $field = $this->request->get->get('field');
         echo $this->render('editor/files/list.tpl', [
             'structure' => $structure,

@@ -88,8 +88,12 @@
                             </a>
                         </td>
                         <td class="file-actions">
+                            <a href="#" class="file-link" data-path="{$file['path']}" data-url="{$file['url']}">
+                                <i class="icon-check_mark"></i>
+                            </a>
+
                             <a href="#" class="delete-link" data-path="{$file['path']}">
-                                <i class="icon-delete_in_filter"></i>
+                                <i class="icon-basket"></i>
                             </a>
                         </td>
                     </tr>
