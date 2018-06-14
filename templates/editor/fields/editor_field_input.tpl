@@ -1,5 +1,12 @@
+{* External dependencies: flowjs/flow.js, jQuery *}
+{$.dependency_js('/modules/dist/Editor/editor/tinymce.min.js')}
+{$.dependency_js('/modules/dist/Editor/editor/jquery.tinymce.min.js')}
+{$.dependency_js('/modules/dist/Editor/js/fileman.js')}
+{$.dependency_css('/modules/dist/Editor/css/filemanager.css')}
+
 <textarea name="{$name}" data-rid="{$rid}" {raw $html}>{$value}</textarea>
 
+{inline_js}
 <script>
     $('[data-rid="{$rid}"]').tinymce({
         language: 'ru',
@@ -38,3 +45,4 @@
         }
     });
 </script>
+{/inline_js}
