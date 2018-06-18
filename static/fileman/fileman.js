@@ -1,3 +1,6 @@
+require('./fileman.scss');
+const Flow = require('@flowjs/flow.js');
+
 (function ($) {
     "use strict";
 
