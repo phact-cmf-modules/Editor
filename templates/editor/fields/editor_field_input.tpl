@@ -1,11 +1,15 @@
 {* External dependencies: flowjs/flow.js, jQuery *}
-{$.dependency_js('Editor/editor/tinymce.min.js', 'modules')}
-{$.dependency_js('Editor/editor/jquery.tinymce.min.js', 'modules')}
 
 <textarea name="{$name}" data-rid="{$rid}" {raw $html}>{$value}</textarea>
 
 {inline_js}
 <script>
+    if (!$('[data-tinymce-script]').length) {
+        $('body').append($(document.createElement('script')).attr('data-tinymce-script', '').attr('src', '{$.assets_public_path('Editor/editor/tinymce.min.js', 'modules')}'));
+    }
+    if (!$('[data-jquery-tinymce-script]').length) {
+        $('body').append($(document.createElement('script')).attr('data-jquery-tinymce-script', '').attr('src', '{$.assets_public_path('Editor/editor/jquery.tinymce.min.js', 'modules')}'));
+    }
     $('[data-rid="{$rid}"]').tinymce({
         language: 'ru',
         plugins: [
