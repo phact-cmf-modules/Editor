@@ -11,7 +11,7 @@
         $('body').append($(document.createElement('script')).attr('data-jquery-tinymce-script', '').attr('src', '{$.assets_public_path('Editor/editor/jquery.tinymce.min.js', 'modules')}'));
     }
     $('[data-rid="{$rid}"]').tinymce({
-        language: 'ru',
+        language: '{$lang}',
         plugins: [
             'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
             'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime image imagetools media nonbreaking',

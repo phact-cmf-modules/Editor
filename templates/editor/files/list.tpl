@@ -2,7 +2,9 @@
     <div class="row">
         <div class="column large-12">
             <div class="drop-info" id="select">
-                <p class="info">Перетащите файлы сюда или нажмите для загрузки</p>
+                <p class="info">
+                    {t "Editor.main" "Drag files here or click for upload"}
+                </p>
                 <div class="progress">
                     <div class="meter progress_bar" id="progress_bar"></div>
                 </div>
@@ -11,13 +13,13 @@
             <div class="row actions-row manage">
                 <div class="large-4 column">
                     <a class="button expand remove-selected" href="#">
-                        Удалить выбранные файлы
+                        {t "Editor.main" "Delete selected files"}
                     </a>
                 </div>
                 <div class="large-8 column create-column">
-                    <input class="create-folder-input" id="folderName" type="text" placeholder="Имя папки"/>
+                    <input class="create-folder-input" id="folderName" type="text" placeholder="{t "Editor.main" "Directory name"}"/>
                     <button class="create-folder-button button expand">
-                        Создать папку
+                        {t "Editor.main" "Create directory"}
                     </button>
                 </div>
             </div>
@@ -111,6 +113,6 @@
         uploadUrl: '{url route='editor:upload'}',
         listUrl: '{url route='editor:index'}',
         apiUrl: '{url route='editor:api'}',
-        prevention: 'Вы действительно хотите удалить данный файл?'
+        prevention: '{t "Editor.main" "Do you really want to delete this file?"}'
     });
 </script>

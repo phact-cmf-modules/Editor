@@ -7,8 +7,6 @@
  * @author Okulov Anton
  * @email qantus@mail.ru
  * @version 1.0
- * @company HashStudio
- * @site http://hashstudio.ru
  * @date 10/11/16 09:13
  */
 
@@ -16,20 +14,36 @@ namespace Modules\Editor\Controllers;
 
 use Exception;
 use Phact\Controller\Controller;
-use Phact\Helpers\Paths;
 use Phact\Helpers\Text;
 use Phact\Main\Phact;
+use Phact\Request\HttpRequestInterface;
 use Phact\Storage\FileSystemStorage;
 use Phact\Storage\Storage;
+use Phact\Storage\StorageInterface;
+use Phact\Template\RendererInterface;
 
 class EditorController extends Controller
 {
     /**
-     * @return Storage|FileSystemStorage
+     * @var StorageInterface
+     */
+    protected $_storage;
+
+    public function __construct(
+        HttpRequestInterface $request,
+        StorageInterface $storage,
+        RendererInterface $renderer = null)
+    {
+        $this->_storage = $storage;
+        parent::__construct($request, $renderer);
+    }
+
+    /**
+     * @return StorageInterface
      */
     public function getStorage()
     {
-        return Phact::app()->storage;
+        return $this->_storage;
     }
 
     public function getBasePath()
@@ -77,7 +91,9 @@ class EditorController extends Controller
     public function index()
     {
         $path = $this->getPath();
-        $this->getStorage()->prepareFilePath($path . DIRECTORY_SEPARATOR . 'file');
+        if (!$this->getStorage()->isDir($path)) {
+            $this->getStorage()->mkDir($path);
+        }
         $structure = $this->getStorage()->dir($path);
         $field = $this->request->get->get('field');
         echo $this->render('editor/files/list.tpl', [
