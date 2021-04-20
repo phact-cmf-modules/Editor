@@ -79,7 +79,7 @@ class EditorController extends Controller
         if ($filename) {
             $result[] = $filename;
         }
-        return implode($result, DIRECTORY_SEPARATOR);
+        return implode(DIRECTORY_SEPARATOR, $result);
     }
 
     public function getUpFolder()
