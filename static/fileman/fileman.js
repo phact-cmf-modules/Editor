@@ -200,7 +200,7 @@ const Flow = require('@flowjs/flow.js');
         openFile: function (url) {
             var me = this;
             $('#' + this.options.field).val(url);
-            $('.modal-closer').trigger('click');
+            $('.modal-closer').last().trigger('click');
             console.log(url);
         },
         openFolder: function (path) {
